@@ -7,7 +7,6 @@ for(let i = 0; i < links.children.length; i++){
     filhos.addEventListener("click", function(){
         //pega o caminho da img no atributo data-image
         const img = this.dataset.image;
-
         imagem.src = img;
         const title = this.dataset.title;
         titulo.innerHTML = title;
