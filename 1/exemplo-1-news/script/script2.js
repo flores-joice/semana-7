@@ -1,4 +1,4 @@
-const input = document.getElementById("newsInputEmail");
+tweets-timeline__boxconst input = document.getElementById("newsInputEmail");
 const botao = document.querySelector(".news__button");
 
 botao.addEventListener("click", function(event){
