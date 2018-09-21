@@ -66,6 +66,21 @@ button.addEventListener("click", function(e){
         return false
     }
 
+    //data
+    const date = new Date();
+    const month = date.toLocaleDateString("pt-br", {
+        month: "short"
+    });
+    const day = date.getDate();
+
+    //hora
+    const horario = new Date;
+    const hs = horario.getHours();
+    const tempMin = horario.getMinutes();
+    const min = tempMin > 9 ? tempMin : '0' + tempMin;
+    //const seg = horario.getSeconds();
+
+
    const newTweetBox = document.createElement("div");
 
    newTweetBox.innerHTML = 
@@ -73,7 +88,7 @@ button.addEventListener("click", function(e){
         <div class="tweets-timeline__header">
             <span class="tweets-timeline__name">Joice.js</span>
             <span class="tweets-timeline__username">flores-joice</span>
-            <span class="tweets-timeline__date">1 de ago</span>
+            <span class="tweets-timeline__date"> ${day} de ${month} às ${hs}:${min}</span>
         </div>
         <p class="tweets-timeline__tweet">${texto.value}</p>
         <div class="tweets-timeline__footer">
