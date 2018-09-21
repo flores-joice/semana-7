@@ -52,11 +52,27 @@
 const button = document.querySelector(".tweet-composer__button");
 const timeline = document.querySelector(".tweets-timeline");
 const texto = document.getElementById("tweetComposerInput");
-const counter = document.getElementById("tweetComposerCounter");
 
-texto.addEventListener("oninput", function(){
-    counter = counter - texto.length;
-    console.log(texto.length);
+
+texto.addEventListener("keyup", function(){
+    const textBox = this;
+    const maxLength = 280;
+    const counter = document.getElementById("tweetComposerCounter");
+    const valorAtual = maxLength - textBox.value.length;
+
+    counter.innerHTML = valorAtual;
+    if(textBox.value.length > maxLength){
+        textBox.value = textBox.value.substring(0, maxLength);
+    }
+    if(valorAtual <= 15){
+        counter.style.color = "red";
+    } else if (valorAtual < 0){
+        button.disabled = true;   
+    } else {
+        counter.style.color = "white";
+        button.disabled = false;
+    }
+  
 })
 
 button.addEventListener("click", function(e){
@@ -99,6 +115,7 @@ button.addEventListener("click", function(e){
    timeline.insertBefore(newTweetBox, timeline.childNodes[0]);
 
    texto.value = "";
+   counter.innerHTML = 280;
 
    const botaoExcluir = document.querySelector(".tweets-timeline__delete-button");
    botaoExcluir.addEventListener("click", function(excluir){
